@@ -6,6 +6,7 @@ from pages.login_page import LoginPage
 from pages.start_page import StartPage
 from pages.choose_branch import ChooseBranch
 from pages.choose_card import ChooseCard
+from pages.logistica_card import LogisticaCard
 
 class LogisticaApp():
     def __init__(self, driver, base_url):
@@ -14,10 +15,11 @@ class LogisticaApp():
         self.wd.get(base_url)
         self.wait = WebDriverWait(driver, 20)
         self.wd.maximize_window()
-        self.login_page = LoginPage(driver, base_url)
-        self.choose_branch = ChooseBranch(driver, base_url)
-        self.start_page = StartPage(driver, base_url)
-        self.choose_card = ChooseCard(driver, base_url)
+        self.login_page = LoginPage()
+        self.choose_branch = ChooseBranch()
+        self.start_page = StartPage()
+        self.choose_card = ChooseCard()
+        self.logistica_card = LogisticaCard()
         #self.internal_page = InternalPage(driver, base_url)
 
     def login(self, username, password):
@@ -76,4 +78,4 @@ class LogisticaApp():
         self.choose_card.partner_input.send_keys(partner)
         self.choose_card.resource_input.clear()
         self.choose_card.resource_input.send_keys(resource)
-        self.choose_card.continue_but.click()
+        #self.choose_card.continue_but.click()
