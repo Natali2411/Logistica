@@ -2,7 +2,7 @@ from pages.page import Page
 from pages.start_page import StartPage
 from selenium.webdriver.common.by import By
 
-class LogisticaCard(Page, StartPage):
+class LogisticaCard(Page):
     @property
     def acceptProducerCard_link(self):
         return self.driver.find_element_by_xpath('//div[@id="content"]/div[1]/a[1]')

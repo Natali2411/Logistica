@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 
 
 class StartPage(Page):
+    """Locators on the page: login_page>choose_branch>"""
     @property
     def logout_button(self):
         return self.driver.find_element_by_xpath('//*[@id="signoutLink"]')

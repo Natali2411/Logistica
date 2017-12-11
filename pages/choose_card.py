@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 
 
 class ChooseCard(Page):
+    """Locators on the page of registering credit card"""
     @property
     def logout_but(self):
         return self.driver.find_element_by_css_selector('.top_buts>a:nth-child(2)')

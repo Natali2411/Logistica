@@ -1,13 +1,15 @@
 from pages.page import Page
 from pages.logistica_card import LogisticaCard
 from pages.start_page import StartPage
-from selenium.webdriver.common.by import By
 
-class LogCardSearch(Page, StartPage, LogisticaCard):
 
+class LogCardSearch(StartPage, LogisticaCard):
+    #Locators on the page on searching logistic cards
+    @property
     def search_tab(self):
         return self.driver.find_element_by_xpath('//*[@id="searchTabs"]/a[1]')
 
+    @property
     def barcode_tab(self):
         return self.driver.find_element_by_xpath('//*[@id="searchTabs"]/a[2]')
 
