@@ -29,15 +29,18 @@ class LogisticaApp():
         self.create_order_net2 = CreateOrderNet2(driver,base_url)
         # self.internal_page = InternalPage(driver, base_url)
 
-    def login(self, username, password):
+    def login(self, username, password, brVal):
         self.login_page.login_input.clear()
         self.login_page.login_input.send_keys(username)
         self.login_page.pass_input.clear()
         self.login_page.pass_input.send_keys(password)
         self.login_page.submit_button.click()
+        self.choose_branch.branch_input.clear()
+        self.choose_branch.branch_input.send_keys(brVal)
+        self.choose_branch.header_block.click()
         # to choose an appropriate branch:
-        # init_page.choose_branch.branch_list_button.click()
-        # init_page.choose_branch.branch_list.click()
+        #branch = Select(self.choose_branch.branch_list)
+        #branch.select_by_value(brVal)
         self.choose_branch.next_button.click()
 
     def logout(self):
@@ -166,8 +169,14 @@ class LogisticaApp():
     def regServicePackNet2(self, pacVal=None, currVal=None, cardTypeVal=None):
         pacType = Select(self.create_order_net2.packageType_list)
         pacType.select_by_value(pacVal)
-        currency = Select(self.create_order_net2.currency_list)
-        currency.select_by_value(currVal)
+        self.create_order_net2.currency_list.click()
+        # choose currency
+        if 'UAH' in currVal:
+            self.create_order_net2.currency_UAH.click()
+        if 'USD' in currVal:
+            self.create_order_net2.currency_USD.click()
+        if 'EUR' in currVal:
+            self.create_order_net2.currency_EUR.click()
         cardType = Select(self.create_order_net2.cardType_list)
         cardType.select_by_value(cardTypeVal)
         self.create_order_net2.next_but.click()

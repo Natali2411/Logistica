@@ -6,14 +6,14 @@ import time
 
 @pytest.fixture(scope="session")
 def init_page():
-    driver = webdriver.Chrome()
-    page = LogisticaApp(driver=driver, base_url="https://kcfrntapu02.alfa.bank.int:8443/front/")
+    driver = webdriver.Firefox()
+    page = LogisticaApp(driver=driver, base_url="https://kcfrntapu02.alfa.bank.int:8440/front/")
     yield page
     #page.quit()
 
 @pytest.fixture()
 def login(init_page):
-    init_page.login(username='CFRONTTPT02', password='12345678')
+    init_page.login(username='CFRONTTPT02', password='12345678', brVal='!33квм_КР')
     time.sleep(10)  # change later
     yield
     #init_page.logout()
